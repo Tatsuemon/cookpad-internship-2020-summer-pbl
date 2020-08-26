@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# MARK: tag
+tags = ["fish", "meet", "salad", "soup"]
+tags.each do |tag|
+    Tag.create(name: tag)
+end
+
+# MARK: recipe
+(1..100).each do |i|
+    recipe = Recipe.create(title: "Recipe ##{i}", description: "Recipe ##{i} description", step: "Recipe ##{i} has many steps")
+    RecipeTag.create(recipe: recipe, tag_id: i%4+1)
+end
+
+# MARK: user
+User.create(name: "Tatsuemon")
