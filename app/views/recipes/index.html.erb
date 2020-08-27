@@ -1,0 +1,16 @@
+<h1>
+    あなたの一週間分の食事です
+</h1>
+
+<ul>
+    <% @recipes.each_with_index do |recipe, i| %>
+    <li>
+        <div><%= @yobis[i] %></div>
+        <%= link_to  recipe.title, recipe_path(recipe) %>
+        <%= recipe.description %>
+    </li>
+    <% end %>
+</ul>
+
+<%= button_to "ガチャに戻る", '/', method: :get %>
+<%= button_to "買い物リスト", '/ingredients', method: :get %>
