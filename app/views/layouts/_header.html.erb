@@ -1,5 +1,12 @@
 <header>
 
-<div>header</div>
+<% if @current_user.nil? %>
+    <% # TODO(Tatusemon): ログイン画面に飛ばす %>
+    <%= link_to  "ログイン", '/' %> | 
+<% else %>
+    <%= link_to  "ガチャガチャ💗", '/' %> | 
+    <%= link_to  "一週間の食事", '/recipes' %> | 
+    <%= link_to  "買い物リスト", '/ingredients' %>
+<% end %>
 
 </header>

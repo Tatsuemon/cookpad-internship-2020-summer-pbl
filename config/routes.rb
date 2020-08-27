@@ -4,4 +4,6 @@ Rails.application.routes.draw do
   resources :gachas, only: [:create]
   resources :recipes, only: [:index, :show]
   resources :ingredients, only: [:index]
+
+  post '/ingredients/checked' => "ingredients#check"
 end

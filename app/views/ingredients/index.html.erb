@@ -5,7 +5,7 @@
 <ul>
     <% @group_ingredients.each do |group_ingredient| %>
         <li>
-            <%= check_box :group_ingredient, { multiple: true, checked: group_ingredient.checked } %>
+            <%= check_box :group_ingredient, :ingredient_ids, { checked: group_ingredient.checked, id: "#{group_ingredient.ingredient_id}" } %>
             <%= group_ingredient.ingredient.name %>
             （ <%= group_ingredient.amount %>
             <%= group_ingredient.unit %> ）
