@@ -2,5 +2,16 @@
     買い物リスト
 </h1>
 
+<ul>
+    <% @group_ingredients.each do |group_ingredient| %>
+        <li>
+            <%= check_box :group_ingredient, { multiple: true, checked: group_ingredient.checked } %>
+            <%= group_ingredient.ingredient.name %>
+            （ <%= group_ingredient.amount %>
+            <%= group_ingredient.unit %> ）
+        </li>
+    <% end %>
+</ul>
+
 
 <%= button_to "戻る", :back, method: :get %>

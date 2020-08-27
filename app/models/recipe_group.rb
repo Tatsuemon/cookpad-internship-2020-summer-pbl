@@ -1,4 +1,4 @@
-class WeekRecipe < ApplicationRecord
+class RecipeGroup < ApplicationRecord
     belongs_to :user
     belongs_to :saturday_recipe, class_name: "Recipe", foreign_key: "saturday_recipe_id"
     belongs_to :sunday_recipe, class_name: "Recipe", foreign_key: "sunday_recipe_id"
@@ -7,6 +7,9 @@ class WeekRecipe < ApplicationRecord
     belongs_to :wednesday_recipe, class_name: "Recipe", foreign_key: "wednesday_recipe_id"
     belongs_to :thursday_recipe, class_name: "Recipe", foreign_key: "thursday_recipe_id"
     belongs_to :friday_recipe, class_name: "Recipe", foreign_key: "friday_recipe_id"
+
+    has_many :group_ingredients, dependent: :destroy
+    has_many :ingredients, through: :group_ingredients
 
     def get_recipe_ids
         [
@@ -20,9 +23,10 @@ class WeekRecipe < ApplicationRecord
         ]
     end
 
+    # MARK: 複合キーじゃなくなったからこれをする必要なし
     def self.update_recipes(recipe_ids, user_id, start_date)
         sql = <<-SQL
-            update `week_recipes`
+            update `recipe_groups`
             set `saturday_recipe_id` = :saturday_recipe_id,
             `sunday_recipe_id` = :sunday_recipe_id,
             `monday_recipe_id` = :monday_recipe_id,
@@ -49,5 +53,7 @@ class WeekRecipe < ApplicationRecord
                 start_date: start_date
             ]
         ))
+
+        self.find_by(user_id: user_id, start_date: start_date)
     end
 end
