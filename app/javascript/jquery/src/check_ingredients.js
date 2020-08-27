@@ -11,7 +11,7 @@ $(function(){
      });
     
     $('input[name="group_ingredient[ingredient_ids]"]').change(function(){
-        let id = $(this).attr('id');
+        let id = $(this).attr('title');
         let is_checked = $(this).prop('checked');
 
         $.ajax({
