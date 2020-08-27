@@ -31,17 +31,17 @@ end
 # MARK: user
 user = User.create(name: "Tatsuemon")
 
-recipes = Recipe.find((1..100).to_a.sample(7))
+# recipes = Recipe.find((1..100).to_a.sample(7))
 
-# MARK: week_recipe
-WeekRecipe.create(
-    user: user,
-    start_date: Date.new(2020, 8, 22),
-    saturday_recipe_id: recipes[0].id,
-    sunday_recipe_id: recipes[1].id,
-    monday_recipe_id: recipes[2].id,
-    tuesday_recipe_id: recipes[3].id,
-    wednesday_recipe_id: recipes[4].id,
-    thursday_recipe_id: recipes[5].id,
-    friday_recipe_id: recipes[6].id,
-)
+# # MARK: week_recipe
+# WeekRecipe.create(
+#     user: user,
+#     start_date: Date.new(2020, 8, 22),
+#     saturday_recipe_id: recipes[0].id,
+#     sunday_recipe_id: recipes[1].id,
+#     monday_recipe_id: recipes[2].id,
+#     tuesday_recipe_id: recipes[3].id,
+#     wednesday_recipe_id: recipes[4].id,
+#     thursday_recipe_id: recipes[5].id,
+#     friday_recipe_id: recipes[6].id,
+# )
