@@ -1,24 +1,12 @@
-# README
+## 起動方法
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+$ docker-compose up --build
+```
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+別のターミナルで
+```
+$ docker-compose run app db:create
+$ docker-compose run app db:migreate
+$ docker-compose run app db:seed
+```
