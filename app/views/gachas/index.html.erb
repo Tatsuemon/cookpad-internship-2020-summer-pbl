@@ -1,5 +1,14 @@
-<h1>
-    驚異の7連ガチャ！！！！
-</h1>
+<div class='gacha'>
+    <h1>
+        驚異の<span style="color: #F30404;">7連</span>料理ガチャ！！！！
+    </h1>
 
-<%= button_to "ガチャを回す", "/gachas", method: :post %>
+    <h4>
+        どんな料理が出てくるかな？？
+    </h4>
+    <%= button_to "ガチャを回す", "/gachas", {class: 'gacha-button', method: :post} %>
+</div>
+
+<div class='gacha-gif' style="display: none;">
+    <%= image_tag "gacha.gif" %>
+</div>

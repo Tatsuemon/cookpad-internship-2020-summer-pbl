@@ -14,12 +14,12 @@ end
 
 # MARK: ingredient
 (1..30).each do |i|
-    Ingredient.create(name: "Ingredient ##{i}")
+    Ingredient.create(name: "じゃがいも ##{i}")
 end
 
 # MARK: recipe
 (1..100).each do |i|
-    recipe = Recipe.create(title: "Recipe ##{i}", description: "Recipe ##{i} description", step: "Recipe ##{i} has many steps")
+    recipe = Recipe.create(title: "熱々!!!　超絶美味しいカレー ##{i}", description: "このカレーは...##{i}", step: "Recipe ##{i} has many steps", image_url: "nannn.png")
     RecipeTag.create(recipe: recipe, tag_id: i%4+1)
 
     ingredients = Ingredient.find((1..30).to_a.sample(4))
@@ -30,18 +30,3 @@ end
 
 # MARK: user
 user = User.create(name: "Tatsuemon")
-
-# recipes = Recipe.find((1..100).to_a.sample(7))
-
-# # MARK: week_recipe
-# WeekRecipe.create(
-#     user: user,
-#     start_date: Date.new(2020, 8, 22),
-#     saturday_recipe_id: recipes[0].id,
-#     sunday_recipe_id: recipes[1].id,
-#     monday_recipe_id: recipes[2].id,
-#     tuesday_recipe_id: recipes[3].id,
-#     wednesday_recipe_id: recipes[4].id,
-#     thursday_recipe_id: recipes[5].id,
-#     friday_recipe_id: recipes[6].id,
-# )

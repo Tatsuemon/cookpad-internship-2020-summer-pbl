@@ -1,3 +1,32 @@
 <h1>
     レシピの詳細
 </h1>
+
+<div>
+    <h2>
+        料理名: <%= @recipe.title %>
+    </h2>
+
+    <div><%= image_tag @recipe.image_url, style: "height: 20rem; width: 30rem;" %></div>
+
+    <h4>
+        説明: <%= @recipe.description %>
+    </h4>
+
+    <h4>
+        材料:
+    </h4>
+    <ul>
+        <% @recipe.recipe_ingredients.each do |recipe_ingredient| %>
+            <li>
+                <%= recipe_ingredient.ingredient.name %> （<%= recipe_ingredient.amount %> <%= recipe_ingredient.unit %>）
+            </li>
+        <% end %>
+    </ul>
+
+    <h4>
+        工程: <%= @recipe.step %>
+    </h4>
+</div>
+
+<%= button_to "一週間の食事に戻る", '/recipes', method: :get %>

@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   resources :ingredients, only: [:index]
 
   post '/ingredients/checked' => "ingredients#check"
+  post '/recipes/checked' => "recipes#check"
 end

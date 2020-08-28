@@ -40,6 +40,14 @@ ActiveRecord::Schema.define(version: 2020_08_27_045259) do
     t.bigint "wednesday_recipe_id", null: false
     t.bigint "thursday_recipe_id", null: false
     t.bigint "friday_recipe_id", null: false
+    t.boolean "saturday_cook", default: true, null: false
+    t.boolean "sunday_cook", default: true, null: false
+    t.boolean "monday_cook", default: true, null: false
+    t.boolean "tuesday_cook", default: true, null: false
+    t.boolean "wednesday_cook", default: true, null: false
+    t.boolean "thursday_cook", default: true, null: false
+    t.boolean "friday_cook", default: true, null: false
+    t.boolean "is_changed", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["friday_recipe_id"], name: "friday_recipe_id"

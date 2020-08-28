@@ -10,6 +10,14 @@ class CreateRecipeGroups < ActiveRecord::Migration[6.0]
       t.bigint :wednesday_recipe_id, null: false
       t.bigint :thursday_recipe_id, null: false
       t.bigint :friday_recipe_id, null: false
+      t.boolean :saturday_cook, null: false, default: true
+      t.boolean :sunday_cook, null: false, default: true
+      t.boolean :monday_cook, null: false, default: true
+      t.boolean :tuesday_cook, null: false, default: true
+      t.boolean :wednesday_cook, null: false, default: true
+      t.boolean :thursday_cook, null: false, default: true
+      t.boolean :friday_cook, null: false, default: true
+      t.boolean :is_changed, null: false, default: true
 
       t.timestamps
     end

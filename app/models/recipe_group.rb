@@ -11,16 +11,56 @@ class RecipeGroup < ApplicationRecord
     has_many :group_ingredients, dependent: :destroy
     has_many :ingredients, through: :group_ingredients
 
-    def get_recipe_ids
+    def get_recipes
         [
-            self.saturday_recipe_id,
-            self.sunday_recipe_id,
-            self.monday_recipe_id,
-            self.tuesday_recipe_id,
-            self.wednesday_recipe_id,
-            self.thursday_recipe_id,
-            self.friday_recipe_id,
+            self.saturday_recipe,
+            self.sunday_recipe,
+            self.monday_recipe,
+            self.tuesday_recipe,
+            self.wednesday_recipe,
+            self.thursday_recipe,
+            self.friday_recipe,
         ]
+    end
+
+    def get_cook
+        [
+            self.saturday_cook,
+            self.sunday_cook,
+            self.monday_cook,
+            self.tuesday_cook,
+            self.wednesday_cook,
+            self.thursday_cook,
+            self.friday_cook,
+        ]
+    end
+
+    def get_cook_label
+        [
+            "saturday_cook",
+            "sunday_cook",
+            "monday_cook",
+            "tuesday_cook",
+            "wednesday_cook",
+            "thursday_cook",
+            "friday_cook",
+        ]
+    end
+
+    def get_cook_params(index, value)
+        labels = self.get_cook_label()
+
+        {
+            "#{labels[index]}" => value,
+            is_changed: true
+        }
+    end
+
+    def get_cook_recipes
+        cook = self.get_cook
+        recipes = self.get_recipes
+
+        recipes.select.with_index { |recipe, index| cook[index] }
     end
 
     # MARK: 複合キーじゃなくなったからこれをする必要なし
@@ -33,7 +73,15 @@ class RecipeGroup < ApplicationRecord
             `tuesday_recipe_id` = :tuesday_recipe_id,
             `wednesday_recipe_id` = :wednesday_recipe_id,
             `thursday_recipe_id` = :thursday_recipe_id,
-            `friday_recipe_id` = :friday_recipe_id
+            `friday_recipe_id` = :friday_recipe_id,
+            `saturday_cook` = true,
+            `sunday_cook` = true,
+            `monday_cook` = true,
+            `tuesday_cook` = true,
+            `wednesday_cook` = true,
+            `thursday_cook` = true,
+            `friday_cook` = true,
+            `is_changed` = true
             where `user_id` = :user_id
             and `start_date` = :start_date
         SQL

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-$(function(){
+$(document).on('turbolinks:load', function(){
     $.ajaxPrefilter(function(options, originalOptions, jqXHR) {
         var token;
         if (!options.crossDomain) {

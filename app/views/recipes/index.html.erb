@@ -5,9 +5,15 @@
 <ul>
     <% @recipes.each_with_index do |recipe, i| %>
     <li>
-        <div><%= @yobis[i] %></div>
+        <div><%= @yobis[i] %>（<%= @recipe_group.start_date + i %>）</div>
         <%= link_to  recipe.title, recipe_path(recipe) %>
-        <%= recipe.description %>
+        （説明）<%= recipe.description %>
+
+        <div>
+            <%= check_box :recipes, :recipe_ids, { checked: @recipe_group.get_cook[i], title: "#{i}", id: "recipe_#{recipe.id}" } %>
+            この料理をつくる？？
+        </div>
+        <div><%= image_tag recipe.image_url, style: "height: 20rem; width: 30rem;" %></div>
     </li>
     <% end %>
 </ul>
