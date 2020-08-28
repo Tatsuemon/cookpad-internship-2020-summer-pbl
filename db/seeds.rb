@@ -13,16 +13,17 @@ tags.each do |tag|
 end
 
 # MARK: ingredient
-(1..30).each do |i|
-    Ingredient.create(name: "じゃがいも ##{i}")
+ingredient_data = ["じゃがいも", "にんじん", "キャベツ", "牛肉", "鶏肉", "豚肉", "さんま", "玉ねぎ", "長ネギ", "ナッツ", "オレンジ", "グレープフルーツ", "パン", "ご飯", "卵"]
+ingredient_data.each do |i|
+    Ingredient.create(name: "#{i}")
 end
 
 # MARK: recipe
 (1..100).each do |i|
-    recipe = Recipe.create(title: "熱々!!!　超絶美味しいカレー ##{i}", description: "このカレーは...##{i}", step: "Recipe ##{i} has many steps", image_url: "nannn.png")
+    recipe = Recipe.create(title: "熱々!!!　超絶美味しいカレー ##{i}", description: "このカレーは...##{i}", step: "1. じゃがいもとにんじんをぶつ切りにして...##{i}", image_url: "nannn.png")
     RecipeTag.create(recipe: recipe, tag_id: i%4+1)
 
-    ingredients = Ingredient.find((1..30).to_a.sample(4))
+    ingredients = Ingredient.find((1..ingredient_data.size()).to_a.sample(4))
     (1..4).each do |j|
         RecipeIngredient.create(recipe: recipe, ingredient: ingredients[j], amount: 2.5, unit: "個")
     end
